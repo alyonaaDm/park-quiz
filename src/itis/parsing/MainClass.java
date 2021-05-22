@@ -1,6 +1,8 @@
 package itis.parsing;
 
 
+import java.io.IOException;
+
 /*
 Вы пишите систему для интеграции с готовой структурой заказчика и обработки данных о парках и зонах отдыха.
 !!КЛАСС PARK менять НЕЛЬЗЯ (совсем). Считается что он является частью готовой библиотеки!!
@@ -39,11 +41,14 @@ public class MainClass {
             park = parsingService.parseParkData(parkFilePath);
         } catch (ParkParsingException parsingException) {
 
-        } catch (RuntimeException e) {
+        } catch (RuntimeException | IOException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
         System.out.println(park);
+
 
     }
 
